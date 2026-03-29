@@ -1,0 +1,19 @@
+@if (tooltip(); as tooltip) {
+  <div
+    class="annotation-tooltip"
+    role="tooltip"
+    [style.left.px]="tooltip.x"
+    [style.top.px]="tooltip.y"
+    (mouseleave)="onMouseLeave()"
+  >
+    <button class="annotation-tooltip__close" aria-label="Delete annotation" (click)="onDelete()">
+      ✕
+    </button>
+
+    @if (tooltip.note) {
+      <p class="annotation-tooltip__note">{{ tooltip.note }}</p>
+    } @else {
+      <p class="annotation-tooltip__note annotation-tooltip__note--empty">No note</p>
+    }
+  </div>
+}

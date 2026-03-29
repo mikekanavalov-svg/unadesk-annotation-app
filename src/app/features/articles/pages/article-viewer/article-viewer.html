@@ -1,0 +1,54 @@
+<div class="viewer">
+  <button class="back-btn" (click)="goBack()">Back</button>
+
+  @if (mode() === 'create') {
+    <input
+      class="title"
+      [value]="title()"
+      (input)="onTitleInput($event)"
+      placeholder="Article title"
+    />
+    <textarea
+      class="content"
+      [value]="content()"
+      (input)="onContentInput($event)"
+      placeholder="Write your text here..."
+    ></textarea>
+    <button (click)="save()">Create</button>
+  } @else if (mode() === 'edit') {
+    <input class="title" [value]="title()" (input)="onTitleInput($event)" />
+    <textarea class="content" [value]="content()" (input)="onContentInput($event)"></textarea>
+    <button (click)="save()">Save</button>
+  } @else if (mode() === 'view') {
+    @if (article(); as article) {
+      <h2>{{ article.title }}</h2>
+      <div
+        #textContainer
+        class="text-content"
+        role="region"
+        aria-label="Article text"
+        tabindex="0"
+        (mouseup)="onTextSelection()"
+        (keydown)="onContainerKeydown($event)"
+        (mouseover)="onContainerMouseover($event)"
+        (mouseout)="onContainerMouseout($event)"
+        (focus)="onContainerFocus($event)"
+        (blur)="onContainerBlur()"
+      ></div>
+
+      <button (click)="enterEdit()">Edit</button>
+    } @else {
+      <p>Article not found</p>
+    }
+  }
+
+  <app-annotation-tooltip
+    [tooltip]="tooltip()"
+    (closed)="onTooltipMouseleave()"
+    (deleted)="onDeleteAnnotation($event)"
+  />
+
+  @if (modalOpen()) {
+    <app-annotation-modal (save)="onModalSave($event)" (closed)="onModalCancel()" />
+  }
+</div>

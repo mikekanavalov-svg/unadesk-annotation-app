@@ -1,0 +1,40 @@
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+}
+
+button {
+  margin: 8px 0;
+  padding: 6px 12px;
+  border: none;
+  background: #1976d2;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1565c0;
+}
+
+.article-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #1976d2;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

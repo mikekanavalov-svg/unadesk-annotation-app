@@ -1,0 +1,30 @@
+<div class="backdrop">
+  <div class="modal">
+    <h3>New annotation</h3>
+
+    <textarea
+      placeholder="Enter annotation text"
+      [value]="note()"
+      (input)="note.set($any($event.target).value)"
+    ></textarea>
+
+    <div class="colors">
+      @for (c of colors; track c) {
+        <button
+          type="button"
+          class="color"
+          [style.background]="c"
+          [class.active]="selectedColor() === c"
+          (click)="selectColor(c)"
+        >
+          &nbsp;
+        </button>
+      }
+    </div>
+
+    <div class="actions">
+      <button type="button" (click)="onCancel()">Cancel</button>
+      <button type="button" (click)="onSave()">Create</button>
+    </div>
+  </div>
+</div>

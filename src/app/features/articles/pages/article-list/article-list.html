@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Articles</h1>
+
+  <button (click)="create()">+ Create Article</button>
+
+  @if (articles().length === 0) {
+    <p>No articles yet</p>
+  } @else {
+    <ul>
+      @for (article of articles(); track article.id) {
+        <li class="article-item">
+          <button class="link" (click)="open(article.id)">
+            {{ article.title || 'Untitled' }}
+          </button>
+          <button (click)="delete(article.id)">Delete</button>
+        </li>
+      }
+    </ul>
+  }
+</div>
