@@ -48,6 +48,12 @@ Open http://localhost:4200
 
 ---
 
+## Live demo
+
+https://mikekanavalov-svg.github.io/unadesk-annotation-app/
+
+---
+
 ## Notes
 
 - `innerHTML` is used intentionally with full escaping
